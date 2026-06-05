@@ -3,15 +3,11 @@ from src.recargas import procesar_recarga, MontoInvalidoError
 
 
 def test_monto_inferior_rechazado():
-    # Arrange & Act & Assert
     with pytest.raises(MontoInvalidoError):
         procesar_recarga(999, "estandar")
-
-
 def test_monto_superior_rechazado():
     with pytest.raises(MontoInvalidoError):
         procesar_recarga(50001, "estandar")
-
 
 @pytest.mark.parametrize("monto, tipo_plan, bono_esperado", [
     (1000, "estandar", 0),
@@ -25,8 +21,5 @@ def test_monto_superior_rechazado():
     (1000, "premium", 5),
 ])
 def test_calcular_bonificaciones(monto, tipo_plan, bono_esperado):
-    # Act
     porcentaje_obtenido = procesar_recarga(monto, tipo_plan)
-
-    # Assert
     assert porcentaje_obtenido == bono_esperado
