@@ -24,7 +24,7 @@ def verificar_rendimiento_p95(environment, **kwargs):
     print(f"Tiempo de respuesta P95: {p95} ms")
 
     if p95 > 300:
-        print("❌ FALLO: El tiempo P95 supera el límite estricto de 300ms.")
+        print("FALLO: El tiempo P95 supera el límite estricto de 300ms.")
         environment.process_exit_code = 1
     else:
-        print("✅ ÉXITO: El sistema cumple con la métrica de rendimiento (P95 < 300ms).")
+        print("ÉXITO: El sistema cumple con la métrica de rendimiento (P95 < 300ms).")
